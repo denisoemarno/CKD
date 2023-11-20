@@ -1,4 +1,4 @@
-FROM python:3-alpine
+FROM python:3.8-slim-buster
  
 # Create app directory
 WORKDIR /app
@@ -12,4 +12,4 @@ RUN /bin/sh -c pip install -r requirements.txt
 COPY . .
  
 EXPOSE 5000
-CMD [ "flask", "run","--host","0.0.0.0","--port","5000"]
+CMD [ "python3","flask", "run","--host","0.0.0.0","--port","5000"]
