@@ -13,6 +13,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
     <!-- Latform styles -->
     <link rel="stylesheet" href="static/dist/css/latform-style-6.min.css" type="text/css">
+    <style>
+        img.animated-gif{
+        width: 120px;
+         height: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -31,21 +37,21 @@
                         
                     <div class="col">
                         <div class="row">
-    <div style="color:black;" class="container">
+    <div>
         <form action="{{ url_for('predict')}}" method="post">
             <h2 class='container-heading'><span class="heading_font">Chronic Kidney Disease Prediction</span></h2>
 
         <br><br><br><br>
 
         <!-- Result -->
-		<div style="color:black;" class="results">
+		<div>
 			{% if prediction==1 %}
-				<h1><span class='danger'>Oops! 🙁<br><br>You have CHRONIC KIDNEY DISEASE.<br><br>Please Consult Doctor.</span></h1>
+				<h3><span class='danger'>Oops! 🙁<br><br>You have CHRONIC KIDNEY DISEASE.<br><br>Please Consult Doctor.</span></h3>
                 <br><br><br><br><br><br>
-				<img class="gif" src="{{ url_for('static', filename='giphy.gif')}}" alt="STROKE Image">
+				<img class="animated-gif" src="{{ url_for('static', filename='giphy.gif')}}" alt="STROKE Image">
 			{% elif prediction==0 %}
-				<h1><span class='safe'>🎉 Congratulation! 🎉<br><br>You DON'T have Chronic Kidney Disease.</span></h1>
-				<img class="gif1" src="{{ url_for('static', filename='doctor.gif')}}" alt="Not STROKE Image">
+				<h3><span class='safe'>🎉 Congratulation! 🎉<br><br>You DON'T have Chronic Kidney Disease.</span></h3>
+				<img class="animated-gif" src="{{ url_for('static', filename='doctor.gif')}}" alt="Not STROKE Image">
 			{% endif %}
 		</div>
         </form>
