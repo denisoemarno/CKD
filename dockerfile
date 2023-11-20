@@ -1,16 +1,16 @@
 # This is a sample Dockerfile
 
 # set base image python:3.8-slim-buster
-FROM python:3.8-slim-buster
+FROM python:latest
 
 # set working directory as app
 WORKDIR /app
 
 # copy requirements.txt file from local (source) to file structure of container (destination) 
-COPY requirements.txt requirements.txt
+# COPY requirements.txt requirements.txt
 
 # Install the requirements specified in file using RUN
-RUN pip3 install -r requirements.txt
+# RUN pip3 install -r requirements.txt
 
 # copy all items in current local directory (source) to current container directory (destination)
 COPY . .
