@@ -46,7 +46,7 @@
         <!-- Result -->
 		<div>
 			{% if prediction==1 %}
-				<h3><span class='danger'>Oops! 🙁<br><br>You have CHRONIC KIDNEY DISEASE.<br><br>Please Consult Doctor.</span></h3>
+				<h3><span class='text-danger'>Oops! 🙁<br><br>You have CHRONIC KIDNEY DISEASE.<br><br><b>Please Consult Doctor.</b></span></h3>
                 <br><br><br><br><br><br>
 				<img class="animated-gif" src="{{ url_for('static', filename='giphy.gif')}}" alt="STROKE Image">
 			{% elif prediction==0 %}
