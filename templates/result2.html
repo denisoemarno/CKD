@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Chronic Kidney Disease Model</title>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="static/dist/vendor/bootstrap-4.5.3/css/bootstrap.min.css" type="text/css">
+    <!-- Material design icons -->
+    <link rel="stylesheet" href="static/dist/icons/material-design-icons/css/mdi.min.css" type="text/css">
+    <!-- Google font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300&display=swap" rel="stylesheet">
+    <!-- Latform styles -->
+    <link rel="stylesheet" href="static/dist/css/latform-style-6.min.css" type="text/css">
+</head>
+
+<body>
+
+    <div class="form-shape-wrapper">
+        <div class="form-shape">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3000 185.4">
+                <path fill="red" d="M3000,0v185.4H0V0c496.4,115.6,996.4,173.4,1500,173.4S2503.6,115.6,3000,0z"></path>
+            </svg>
+        </div>
+    </div>
+
+    <div class="form-wrapper">
+        <div class="container">
+            <div class="card">
+                <div class="row no-gutters">
+                        
+                    <div class="col">
+                        <div class="row">
+                            <div>
+                                <h3 class="font-weight-bold">Chronic Kidney Disease Prediction</h3>
+                                <form action="{{ url_for('predict')}}" method="post">
+                        
+                                <br><br>
+                        
+                                <!-- Result -->
+                                <div style="color:black;" class="results">
+                                    {% if prediction==1 %}
+                                        <h1><span class='danger'>Oops! 🙁<br><br>You have CHRONIC KIDNEY DISEASE.<br><br>Please Consult Doctor.</span></h1>
+                                        <br><br><br><br><br><br>
+                                        <img class="gif" src="{{ url_for('static', filename='ckd.png')}}" alt="STROKE Image">
+                                    {% elif prediction==0 %}
+                                        <h1><span class='safe'>🎉 Congratulation! 🎉<br><br>You DON'T have Chronic Kidney Disease.</span></h1>
+                                        <img class="gif1" src="{{ url_for('static', filename='kidney.png)}}" alt="Not STROKE Image">
+                                    {% endif %}
+                                </div>
+                                </form>
+                        
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Jquery -->
+    <script src="static/dist/vendor/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="static/dist/vendor/bootstrap-4.5.3/js/bootstrap.min.js"></script>
+    <!-- Latform scripts -->
+    <script src="static/dist/js/latform.min.js"></script>
+</body>
+
+</html>
