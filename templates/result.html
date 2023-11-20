@@ -20,10 +20,10 @@
 			{% if prediction==1 %}
 				<h1><span class='danger'>Oops! 🙁<br><br>You have CHRONIC KIDNEY DISEASE.<br><br>Please Consult Doctor.</span></h1>
                 <br><br><br><br><br><br>
-				<img class="gif" src="{{ url_for('static', filename='health.png')}}" alt="STROKE Image">
+				<img class="gif" src="{{ url_for('static', filename='giphy.gif')}}" alt="STROKE Image">
 			{% elif prediction==0 %}
 				<h1><span class='safe'>🎉 Congratulation! 🎉<br><br>You DON'T have Chronic Kidney Disease.</span></h1>
-				<img class="gif1" src="{{ url_for('static', filename='health.png')}}" alt="Not STROKE Image">
+				<img class="gif1" src="{{ url_for('static', filename='doctor.gif')}}" alt="Not STROKE Image">
 			{% endif %}
 		</div>
         </form>
