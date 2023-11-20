@@ -1,19 +1,19 @@
-# This is a sample Dockerfile
+# start by pulling the python image
+FROM python:3.8-alpine
 
-# set base image python:3.8-slim-buster
-FROM python:latest
+# copy the requirements file into the image
+COPY ./requirements.txt /app/requirements.txt
 
-# set working directory as app
+# switch working directory
 WORKDIR /app
 
-# copy requirements.txt file from local (source) to file structure of container (destination) 
-# COPY requirements.txt requirements.txt
+# install the dependencies and packages in the requirements file
+RUN pip install -r requirements.txt
 
-# Install the requirements specified in file using RUN
-# RUN pip3 install -r requirements.txt
+# copy every content from the local file to the image
+COPY . /app
 
-# copy all items in current local directory (source) to current container directory (destination)
-COPY . .
+# configure the container to run in an executed manner
+ENTRYPOINT [ "python" ]
 
-# command to run when image is executed inside a container
-CMD [ "python3", "app.py" ]
+CMD ["view.py" ]
