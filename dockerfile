@@ -1,34 +1,19 @@
-# Use latest Python runtime as a parent image
-FROM python:3.6.5-slim
+# This is a sample Dockerfile
 
-# Meta-data
-LABEL maintainer="Shuyib" \
-      description="Docker Data Science workflow: Feature engineering and modelling for the chronic kidney disease dataset."
-      
-# Set the working directory to /app
+# set base image python:3.8-slim-buster
+FROM python:3.8-slim-buster
+
+# set working directory as app
 WORKDIR /app
 
-# ensures that the python output is sent to the terminal without buffering
-ENV PYTHONUNBUFFERED=TRUE
+# copy requirements.txt file from local (source) to file structure of container (destination) 
+COPY requirements.txt requirements.txt
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Install the requirements specified in file using RUN
+RUN pip3 install -r requirements.txt
 
-# create a virtual environment and activate it
-# combine run and source commands to avoid creating a new layer in the image
-# install the requirements in the virtual environment
-RUN python3 -m venv ml-env &&\
-            . ml-env/bin/activate &&\
-            pip --no-cache-dir install --upgrade pip &&\
-            pip --no-cache-dir install -r /app/requirements.txt
+# copy all items in current local directory (source) to current container directory (destination)
+COPY . .
 
-
-# Make port 5000 available to the world outside this container
-EXPOSE 5000
-
-# Create mountpoint
-VOLUME /app
-
-# Run jupyter when container launches
-# CMD ["jupyter", "notebook", "--ip='0.0.0.0'", "--port=5000", "--no-browser", "--allow-root"]
-CMD ["python", "-u", "app.py"]
+# command to run when image is executed inside a container
+CMD [ "python3", "app.py" ]
