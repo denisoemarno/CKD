@@ -1,15 +1,6 @@
-FROM python:3.8-slim-buster
- 
-# Create app directory
+FROM python:3.11
+COPY . /app
 WORKDIR /app
- 
-# Install app dependencies
-COPY requirements.txt ./
- 
-RUN /bin/sh -c pip install -r requirements.txt 
- 
-# Bundle app source
-COPY . .
- 
-EXPOSE 5000
-CMD [ "python3","flask", "run","--host","0.0.0.0","--port","5000"]
+RUN pip install -r requirements.txt
+EXPOSE $PORT
+CMD gunicorn --workers=4 --bind 0.0.0.0:$PORT  app:app
