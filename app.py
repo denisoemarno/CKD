@@ -8,7 +8,7 @@ model = pickle.load(open('Kidney.pkl', 'rb'))
 
 @app.route('/',methods=['GET'])
 def Home():
-    return render_template('index.html')
+    return render_template('index.html')    
 
 @app.route("/predict", methods=['POST'])
 def predict():
